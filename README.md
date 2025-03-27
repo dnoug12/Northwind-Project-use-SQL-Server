@@ -112,7 +112,4 @@ Bạn có thể đóng góp bằng cách:
 ## 📌 Liên hệ  
 Nếu có vấn đề gì, hãy mở **Issue trên GitHub** hoặc liên hệ với tôi qua email! 🚀  
 
----
-
-📌 *Lưu ý*: Đây là file `README.md` để sử dụng trên GitHub. Khi upload lên GitHub, nội dung sẽ được hiển thị với định dạng rõ ràng trên giao diện web của repository.
 

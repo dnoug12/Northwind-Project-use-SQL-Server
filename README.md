@@ -1,7 +1,5 @@
 # Northwind Project - SQL Server  
 
-![Northwind](https://upload.wikimedia.org/wikipedia/commons/2/29/Northwind_database_schema.png)
-
 ## 📚 Giới Thiệu  
 Northwind là một cơ sở dữ liệu mẫu phổ biến, được sử dụng để học tập và thực hành SQL Server. Dữ liệu mô phỏng một công ty bán hàng với các bảng liên quan đến khách hàng, đơn hàng, sản phẩm, nhân viên và nhà cung cấp.
 
@@ -11,7 +9,7 @@ Northwind là một cơ sở dữ liệu mẫu phổ biến, được sử dụn
 
 ### 1. Tải dữ liệu Northwind  
    - Truy cập vào link sau để tải file database Northwind:  
-     👉 
+     👉 [Tải Northwind Database](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs)
 
 ### 2. Import vào SQL Server  
    - Mở **SQL Server Management Studio (SSMS)**.  
@@ -20,6 +18,7 @@ Northwind là một cơ sở dữ liệu mẫu phổ biến, được sử dụn
      CREATE DATABASE Northwind;
      ```
    - Sử dụng chức năng **Restore Database** để import file `.bak` vào SQL Server.  
+   - Nếu sử dụng file `.sql`, mở và chạy từng lệnh để tạo bảng và nhập dữ liệu.
 
 > Nếu gặp lỗi khi import, hãy kiểm tra quyền truy cập và phiên bản SQL Server của bạn.
 
@@ -53,7 +52,10 @@ Northwind là một cơ sở dữ liệu mẫu phổ biến, được sử dụn
 | Employees  | Danh sách nhân viên |
 | Products   | Danh mục sản phẩm |
 | Suppliers  | Danh sách nhà cung cấp |
-| ......     | ............
+| Categories | Phân loại sản phẩm |
+| OrderDetails | Chi tiết đơn hàng |
+| Shippers | Đơn vị vận chuyển |
+
 > Xem chi tiết sơ đồ quan hệ các bảng trong file `Northwind_Schema.pdf`
 
 ---
@@ -72,6 +74,11 @@ SELECT YEAR(OrderDate) AS OrderYear, COUNT(*) AS TotalOrders
 FROM Orders 
 GROUP BY YEAR(OrderDate)
 ORDER BY OrderYear DESC;
+
+-- Truy vấn danh sách sản phẩm và nhà cung cấp
+SELECT Products.ProductName, Suppliers.CompanyName 
+FROM Products
+JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID;
 ```
 
 ---
@@ -81,13 +88,16 @@ ORDER BY OrderYear DESC;
 - ✅ Thống kê doanh số và báo cáo bán hàng.
 - ✅ Thực hành các truy vấn SQL nâng cao như **JOIN, GROUP BY, HAVING**.
 - ✅ Hỗ trợ học tập và thực hành SQL Server trên Northwind.
+- ✅ Xây dựng dashboard và báo cáo trên Power BI hoặc Tableau.
 
 ---
 
 ## 📍 Yêu Cầu Hệ Thống  
-- **SQL Server**: Tùy chọn**
+- **SQL Server**: Phiên bản 2016 trở lên (khuyến nghị SQL Server 2019+).
 - **SSMS**: SQL Server Management Studio để thực thi truy vấn.
 - **Git**: Để clone repository (tùy chọn).
+- **Power BI / Tableau**: (Tùy chọn) để phân tích và trực quan hóa dữ liệu.
+
 
 ---
 
@@ -95,10 +105,14 @@ ORDER BY OrderYear DESC;
 Bạn có thể đóng góp bằng cách:
 - Tạo **Issue** nếu bạn gặp lỗi hoặc có câu hỏi.
 - Fork repository và gửi **Pull Request** để đóng góp code.
+- Đề xuất các truy vấn SQL hữu ích hoặc báo cáo phân tích dữ liệu.
 
 ---
 
 ## 📌 Liên hệ  
-Nếu có vấn đề gì, hãy mở **Issue trên GitHub** hoặc liên hệ với mình! 🚀  
+Nếu có vấn đề gì, hãy mở **Issue trên GitHub** hoặc liên hệ với tôi qua email! 🚀  
 
+---
+
+📌 *Lưu ý*: Đây là file `README.md` để sử dụng trên GitHub. Khi upload lên GitHub, nội dung sẽ được hiển thị với định dạng rõ ràng trên giao diện web của repository.
 

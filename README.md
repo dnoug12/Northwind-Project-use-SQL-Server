@@ -55,7 +55,7 @@ Northwind là một cơ sở dữ liệu mẫu phổ biến, được sử dụn
 | Categories | Phân loại sản phẩm |
 | OrderDetails | Chi tiết đơn hàng |
 | Shippers | Đơn vị vận chuyển |
-
+| .........| ......... |
 > Xem chi tiết sơ đồ quan hệ các bảng trong file `Northwind_Schema.pdf`
 
 ---

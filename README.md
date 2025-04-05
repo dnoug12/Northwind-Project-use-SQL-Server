@@ -1,115 +1,118 @@
-# Northwind Project - SQL Server  
+# 📊 Northwind Project - SQL Server
 
-## 📚 Giới Thiệu  
-Northwind là một cơ sở dữ liệu mẫu phổ biến, được sử dụng để học tập và thực hành SQL Server. Dữ liệu mô phỏng một công ty bán hàng với các bảng liên quan đến khách hàng, đơn hàng, sản phẩm, nhân viên và nhà cung cấp.
-
----
-
-## 👥 Hướng Dẫn Tải Xuống và Import Dữ Liệu  
-
-### 1. Tải dữ liệu Northwind  
-   - Truy cập vào link sau để tải file database Northwind:  
-     👉 [Tải Northwind Database](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs)
-
-### 2. Import vào SQL Server  
-   - Mở **SQL Server Management Studio (SSMS)**.  
-   - Chạy lệnh sau để tạo database:  
-     ```sql
-     CREATE DATABASE Northwind;
-     ```
-   - Sử dụng chức năng **Restore Database** để import file `.bak` vào SQL Server.  
-   - Nếu sử dụng file `.sql`, mở và chạy từng lệnh để tạo bảng và nhập dữ liệu.
-
-> Nếu gặp lỗi khi import, hãy kiểm tra quyền truy cập và phiên bản SQL Server của bạn.
+## 📚 Introduction
+Northwind is a popular sample database used for learning and practicing SQL Server. The data simulates a sales company with tables related to customers, orders, products, employees, and suppliers.
 
 ---
 
-## 👤 Hướng Dẫn Mở File Code  
+## 👥 Download and Import Instructions
 
-### 1. Clone Repository  
-   ```bash
-   git clone https://github.com/dnoug12/Northwind-Project-use-SQL-Server.git
-   cd Northwind-Project-use-SQL-Server
-   ```
+### 1. Download the Northwind Database
+- Visit the following link to download the Northwind database files:  
+  👉 [Download Northwind Database](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs)
 
-### 2. Mở file SQL trên SSMS  
-   - Mở **SQL Server Management Studio (SSMS)**.  
-   - Chọn **File** → **Open** → **File...**  
-   - Tìm đến thư mục chứa project và mở file `.sql`.  
+### 2. Import into SQL Server
+- Open **SQL Server Management Studio (SSMS)**.  
+- Run the following command to create the database:
+  ```sql
+  CREATE DATABASE Northwind;
+  ```
+- Use the **Restore Database** feature to import the `.bak` file into SQL Server.  
+- If you have a `.sql` script version, open and execute each statement to create tables and insert data.
 
-### 3. Chạy Query  
-   - Chọn **Northwind Database**.  
-   - Chạy từng lệnh SQL trong file để kiểm tra dữ liệu.  
-
----
-
-## 📈 Các Bảng Quan Trọng  
-
-| Bảng       | Mô tả |
-|------------|-------|
-| Customers  | Thông tin khách hàng |
-| Orders     | Thông tin đơn hàng |
-| Employees  | Danh sách nhân viên |
-| Products   | Danh mục sản phẩm |
-| Suppliers  | Danh sách nhà cung cấp |
-| Categories | Phân loại sản phẩm |
-| OrderDetails | Chi tiết đơn hàng |
-| Shippers | Đơn vị vận chuyển |
-| .........| ......... |
-> Xem chi tiết thông tin các bảng trong file `Northwind Summary.pdf`
+> If you encounter import errors, verify your permissions and SQL Server version.
 
 ---
 
-## 🔧 Các Lệnh SQL Mẫu  
+## 👤 Opening the Code Files
 
+### 1. Clone the Repository
+```bash
+git clone https://github.com/dnoug12/Northwind-Project-use-SQL-Server.git
+cd Northwind-Project-use-SQL-Server
+```
+
+### 2. Open SQL Files in SSMS
+- Launch **SQL Server Management Studio (SSMS)**.  
+- Go to **File** → **Open** → **File...**  
+- Navigate to the project folder and open the `.sql` files.
+
+### 3. Execute Queries
+- Select the **Northwind** database.  
+- Run each SQL statement to explore the data.
+
+---
+
+## 📈 Key Tables
+
+| Table         | Description                 |
+|---------------|-----------------------------|
+| Customers     | Customer information        |
+| Orders        | Order information           |
+| Employees     | Employee list               |
+| Products      | Product catalog             |
+| Suppliers     | Supplier list               |
+| Categories    | Product categories          |
+| OrderDetails  | Order line details          |
+| Shippers      | Shipping companies          |
+| ...           | ...                         |
+
+> For detailed table descriptions, see `Northwind Summary.pdf`.
+
+---
+
+## 🔧 Sample SQL Queries
 ```sql
--- Lấy danh sách khách hàng
+-- List all customers
 SELECT * FROM Customers;
 
--- Lấy danh sách đơn hàng
-SELECT * FROM Orders WHERE OrderDate > '2023-01-01';
+-- List orders placed after January 1, 2023
+SELECT *
+FROM Orders
+WHERE OrderDate > '2023-01-01';
 
--- Thống kê số lượng đơn hàng theo năm
-SELECT YEAR(OrderDate) AS OrderYear, COUNT(*) AS TotalOrders 
-FROM Orders 
+-- Count orders by year
+SELECT YEAR(OrderDate) AS OrderYear,
+       COUNT(*) AS TotalOrders
+FROM Orders
 GROUP BY YEAR(OrderDate)
 ORDER BY OrderYear DESC;
 
--- Truy vấn danh sách sản phẩm và nhà cung cấp
-SELECT Products.ProductName, Suppliers.CompanyName 
-FROM Products
-JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID;
+-- Join products with suppliers
+SELECT p.ProductName,
+       s.CompanyName
+FROM Products p
+JOIN Suppliers s
+  ON p.SupplierID = s.SupplierID;
 ```
 
 ---
 
-## 💎 Tính Năng Chính  
-- ✅ Truy vấn và quản lý dữ liệu khách hàng, đơn hàng, sản phẩm.
-- ✅ Thống kê doanh số và báo cáo bán hàng.
-- ✅ Thực hành các truy vấn SQL nâng cao như **JOIN, GROUP BY, HAVING**.
-- ✅ Hỗ trợ học tập và thực hành SQL Server trên Northwind.
-- ✅ Xây dựng dashboard và báo cáo trên Power BI hoặc Tableau.
+## 💎 Main Features
+- ✅ Query and manage customer, order, and product data.
+- ✅ Generate sales statistics and reports.
+- ✅ Practice advanced SQL queries such as **JOIN**, **GROUP BY**, **HAVING**.
+- ✅ Learn and practice SQL Server using the Northwind dataset.
+- ✅ Build dashboards and reports in Power BI or Tableau.
 
 ---
 
-## 📍 Yêu Cầu Hệ Thống  
-- **SQL Server**: Phiên bản 2016 trở lên (khuyến nghị SQL Server 2019+).
-- **SSMS**: SQL Server Management Studio để thực thi truy vấn.
-- **Git**: Để clone repository (tùy chọn).
-- **Power BI / Tableau**: (Tùy chọn) để phân tích và trực quan hóa dữ liệu.
-
-
----
-
-## 👤 Đóng Góp  
-Bạn có thể đóng góp bằng cách:
-- Tạo **Issue** nếu bạn gặp lỗi hoặc có câu hỏi.
-- Fork repository và gửi **Pull Request** để đóng góp code.
-- Đề xuất các truy vấn SQL hữu ích hoặc báo cáo phân tích dữ liệu.
+## 📍 System Requirements
+- **SQL Server**: Version 2016 or later (recommended SQL Server 2019+).
+- **SSMS**: SQL Server Management Studio for query execution.
+- **Git**: To clone the repository (optional).
+- **Power BI / Tableau**: (Optional) For data analysis and visualization.
 
 ---
 
-## 📌 Liên hệ  
-Nếu có vấn đề gì, hãy mở **Issue trên GitHub** hoặc liên hệ với tôi qua email! 🚀  
+## 👤 Contributing
+You can contribute by:
+- Creating an **Issue** if you find bugs or have questions.
+- Forking the repository and submitting a **Pull Request** to improve code or documentation.
+- Suggesting useful SQL queries or analytical reports.
 
+---
+
+## 📌 Contact
+If you have any questions or issues, please open an **Issue** on GitHub or contact me via email! 🚀
 
